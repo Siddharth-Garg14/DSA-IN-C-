@@ -1,0 +1,30 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+vector <int> next(vector <int> arr)
+{
+    int ind=-1;
+    int n=arr.size();
+    for(int i=arr.size()-2 ; i>=0 ;i--)
+    {
+        if(arr[i+1]>arr[i])//finding the break point 
+        {
+            ind=i;
+            break;
+        }
+    }
+    
+    //swapping
+    for(int i= n-1 ;i>=0 ;i--)
+    {
+        if(arr[i] > arr[ind])
+        {
+            swap(arr[i],arr[ind]);
+        }
+    }
+    
+    //sorting the remaining
+    reverse(arr.begin()+ind+1 , arr.end());
+    
+    return arr;
+}
