@@ -1,0 +1,49 @@
+#include<bits/stdc++.h>
+using namespace std;
+//for finding the specified element //nCr 
+long long nCr(int n,int r)
+{
+    long long res=1;
+    for(int i=0;i<r;i++)
+    {
+        res=res*(n-i);
+        res=res/(i+1);
+    }
+    return res;
+}
+
+int Pascal(int r ,int c)
+{
+    int ele =nCr( r-1, c-1);
+    return ele;
+}
+
+void Row(int r,int c )
+{
+    int ans=1;
+    cout<<ans;
+    for(int i=1;i<c;i++)
+    {
+        ans=ans*(r-i);
+        ans=ans/i;
+        cout<<ans;
+    }
+    cout<<endl;
+}
+
+void Pascal_Triangle(int r,int c)
+{
+    for (int i=1;i<=r;i++)
+    {
+        Row(i,i);
+        
+    }
+}
+
+int main()
+{
+    //int ele =Pascal(5,3);
+    Pascal_Triangle(5,5);
+    cout<<endl;
+   // cout<<ele;
+}
