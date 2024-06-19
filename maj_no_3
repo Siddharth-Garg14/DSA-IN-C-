@@ -1,0 +1,55 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+vector <int> maj_no3(vector<int> arr)
+{
+    int cnt1=0;
+    int el1;
+    int cnt2=0;
+    int el2;
+    int n=arr.size();
+    
+    for(int i=0;i<n;i++)
+    {
+        if(cnt1==0 && arr[i]!=el2){
+            cnt1=1;
+            el1=arr[i];}
+        else if(cnt2==0 && arr[i]!=el1){
+            cnt2=1;
+            el2=arr[i];}
+        else if(arr[i] == el1)
+            cnt1++;
+        else if(arr[i]==el2)
+            cnt2++;
+        else{
+            cnt1--,cnt2--;}
+    }
+    
+    int cnt11=0, cnt22=0;
+    
+    for(int i=0;i<n;i++)
+    {
+        if(arr[i]==el1)
+            cnt11++;
+        if(arr[i]==el2)
+            cnt22++;
+    }
+    
+    int min= int (n/3)+1;
+    vector <int> ls;
+    
+    if(cnt11 >= min)
+        ls.push_back(el1);
+    if(cnt22 >= min)
+        ls.push_back(el2);
+    return ls;
+}
+
+int main()
+{
+    vector<int> arr = {2, 2, 1,3,3,3,3,3, 1, 1, 2, 2,2};
+    vector <int> ans = maj_no3(arr);
+    
+    cout << "The majority element is: " << ans[0]<<" "<<ans[1] << endl;
+    return 0;
+}
