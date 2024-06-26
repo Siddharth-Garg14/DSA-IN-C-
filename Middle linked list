@@ -1,0 +1,80 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+class Node
+{
+    public:
+        int data;
+        Node* next;
+        
+        Node(int data1,Node*next1)
+        {
+            data=data1;
+            next=next1;
+        }
+        
+        Node(int data1)
+        {
+            data=data1;
+            next=nullptr;
+        }
+};
+
+Node* middlelement(Node* head)
+{
+    if(head==NULL || head->next ==NULL)
+        return head;
+    
+    int count=0;
+    Node * temp=head;
+    
+    while(temp!=NULL)
+    {
+        count++;
+        temp=temp->next;
+    }
+    
+    int mid=count/2 +1;
+    temp=head;
+    
+    while(temp!=NULL)
+    {
+        mid=mid-1;
+        
+        if(mid==0)
+        {
+            break;
+        }
+        temp=temp->next;
+    }
+    return temp;
+}
+
+void printlinked(Node* head)
+{
+    Node*temp=head;
+    while(temp!=nullptr)
+    {
+        cout<<temp->data<<" ";
+        temp=temp->next;
+    }
+}
+
+int main()
+{
+    Node* head= new Node(1);
+    
+    head-> next=new Node(3);
+    head-> next->next=new Node(2);
+    head-> next->next->next=new Node(4);
+    head-> next->next->next->next=new Node(5);
+    
+    cout<<"Original Linked List:";
+    printlinked(head);
+    cout<<endl;
+    
+    head=middlelement(head);
+    
+    cout<<head->data;
+    
+}
