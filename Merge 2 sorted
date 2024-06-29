@@ -1,0 +1,85 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+class Node {
+    public:
+        
+        int data;
+        Node* next;
+        
+        Node(int data1, Node* next1)
+        {
+            data=data1;
+            next=next1;
+        }
+        
+        Node(int data1)
+        {
+            data=data1;
+            next=nullptr;
+        }
+};
+
+Node *merge2sorted(Node *list1,Node *list2)
+{
+    Node *dummy =new Node(-1);
+    Node* temp=dummy;
+    while (list1!=nullptr && list2!=nullptr)
+    {
+    if(list1->data <= list2->data)
+    {
+        temp->next=list1;
+        list1=list1->next;
+    }
+    
+    else
+    {
+        temp->next=list2;
+        list2=list2->next;
+    }
+    
+    temp=temp-> next;
+    }
+    if(list1!=nullptr)
+    {
+        temp->next=list1;
+    }
+    else
+    {
+        temp->next=list2;
+    }
+    
+    return dummy->next;
+}
+
+void printLinked(Node* list1)
+{
+    Node* temp=list1;
+    
+    while(temp!=nullptr)
+    {
+        cout<<temp->data<<" ";
+        temp=temp->next;
+    }
+    
+}
+
+int main()
+{
+    Node* list1 = new Node(1);
+    list1->next = new Node(3);
+    list1->next->next = new Node(5);
+
+    Node* list2 = new Node(2);
+
+    cout << "First sorted linked list: ";
+    printLinked(list1);
+    cout<<endl;
+    cout << "Second sorted linked list: ";
+    printLinked(list2);
+
+    Node* mergedList = merge2sorted(list1, list2);
+    cout<<endl;
+    cout << "Final sorted linked list: ";
+    printLinked(mergedList);
+}
