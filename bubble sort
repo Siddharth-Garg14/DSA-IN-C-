@@ -1,0 +1,27 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+
+int main()
+{
+    int arr[6]={13,46,24,52,20,9};
+    int n=sizeof(arr)/sizeof(arr[0]);
+   
+    for (int i =n-1; i>=0; i--)
+    {
+        for (int j=0 ; j <i ; j++)
+        {
+            if (arr[j]>arr[j+1])
+            {
+                swap(arr[j+1],arr[j]);
+            }
+        }
+    }
+    cout<<"After bubble sort:";
+    
+    for (int i = 0; i < n; i++)
+    {
+        cout<<arr[i]<<" ";
+    }
+    return 0;
+}
