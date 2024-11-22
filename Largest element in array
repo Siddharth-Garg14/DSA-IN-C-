@@ -1,0 +1,22 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+int large_element(vector <int> arr,int n)
+{
+    int max=arr[0];
+    for(int i=1;i<n;i++)
+    {
+        if(max<arr[i])
+        {
+            max=arr[i];
+        }
+    }
+    return max;
+}
+int main()
+{
+  vector <int> arr1 = {8,10,5,7,9};
+  int n = 5;
+  int max = large_element(arr1, n);
+  cout << "The largest element in the array is: " << max << endl;
+}
